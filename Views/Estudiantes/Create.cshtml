@@ -1,0 +1,69 @@
+﻿@model Examen.Models.Estudiante
+
+@{
+    ViewData["Title"] = "Create";
+    Console.WriteLine(string.Join(", ", ViewData));
+}
+
+
+<h1 style="text-align:center">Registro de</h1>
+
+<h4 style="text-align:center">Estudiantes</h4>
+<hr />
+<div class="row" style="margin-left:17%" style="text-align:center">
+    <div class="col-md-4" style="margin-left:17%">
+        <form asp-action="Create" style="margin-left:100px">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Cedula" class="control-label"></label>
+                <input asp-for="Cedula" class="form-control" />
+                <span asp-validation-for="Cedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrimerApellido" class="control-label"></label>
+                <input asp-for="PrimerApellido" class="form-control" />
+                <span asp-validation-for="PrimerApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SegundoApellido" class="control-label"></label>
+                <input asp-for="SegundoApellido" class="form-control" />
+                <span asp-validation-for="SegundoApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sexo" class="control-label"></label>
+                <input asp-for="Sexo" class="form-control" />
+                <span asp-validation-for="Sexo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaDeNacimiento" class="control-label"></label>
+                <input asp-for="FechaDeNacimiento" class="form-control" />
+                <span asp-validation-for="FechaDeNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CedulaMadre" class="control-label"></label>
+                <input asp-for="CedulaMadre" class="form-control" />
+                <span asp-validation-for="CedulaMadre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CedulaPadre" class="control-label"></label>
+                <input asp-for="CedulaPadre" class="form-control" />
+                <span asp-validation-for="CedulaPadre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input style="margin-top:10px; text-align:center" type="submit" value="Create" class="btn btn-primary" />
+                <a style="margin-left:10px" asp-action="Index">Volver a atrás</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

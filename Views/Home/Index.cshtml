@@ -1,0 +1,62 @@
+﻿<script>
+    window.location.replace("/Estudiantes/Create");
+</script>
+@model IEnumerable<Examen.Models.Estudiante>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+<!--<script>
+    window.onload = Redireccionar;
+
+    function Redireccionar() {
+        window.location.replace("/Estudiantes/Create");
+    }
+</script>-->
+
+<h1>Lista de Estudiantes</h1>
+<script>
+    window.onload = Redireccionar;
+
+    function Redireccionar() {
+        window.location.replace("/Estudiantes/Create");
+    }
+</script>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimerApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeNacimiento)
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaMadre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaPadre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+   
+    </tbody>
+</table>

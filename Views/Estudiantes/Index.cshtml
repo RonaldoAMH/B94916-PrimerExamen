@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Examen.Models.Estudiante>
+
+@{
+    ViewData["Title"] = "Index";
+    int edad = 0;
+    string sexo = "";
+    int mostrarEdad(int añoNacimiento){
+
+        edad= 2023 - añoNacimiento;
+        return edad;
+    }
+    string genero(int num)
+    {
+        if (num==1)
+        {
+            sexo = "Masculino"; 
+        }else if (num==2)
+        {
+            sexo = "Femenino";
+        }
+        else
+        {
+            sexo = "No definido";
+        }
+        return sexo;
+    }
+}
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Registrar estudiante</a>
+    <a asp-action="Index" asp-route-filtro="@ViewData["Todos"]" class="btn btn-success">Mostrar Todos</a>
+    <a asp-action="Index" asp-route-filtro="@ViewData["FiltroHombres"]" class="btn btn-success">Mostrar Hombres</a>
+    <a asp-action="Index" asp-route-filtro="@ViewData["FiltroMujeres"]" class="btn btn-success">Mostrar Mujeres</a>
+
+</p>
+
+
+<form asp-controller="Estudiantes" asp-action="Index">
+
+    <p>  
+        Buscar por nombre: <input type="text" name="buscar" class="form-text" />
+        <input type="submit" value="Buscar" class="btn btn-sm btn-dark" />
+    </p>
+</form>
+
+<h1>Lista de Estudiantes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.Nombre)              
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimerApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeNacimiento)
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaMadre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CedulaPadre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoApellido)
+            </td>
+            <td>
+                @genero(item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeNacimiento)
+            </td>
+            <td>
+                    @mostrarEdad(item.FechaDeNacimiento.Value.Year)
+                    
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaMadre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CedulaPadre)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
